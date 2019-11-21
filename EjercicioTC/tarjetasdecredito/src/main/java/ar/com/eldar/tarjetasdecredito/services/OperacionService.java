@@ -15,11 +15,9 @@ public class OperacionService {
 
     }
 
-    public  OperacionValidation validar(double importe) {
-        
-        if (Operacion.getImporte() > 1000)
+    public OperacionValidation validar(Operacion operacion) {
+        if (operacion.getImporte() > 1000)
             return OperacionValidation.OPERACION_INVALIDA;
-
         return OperacionValidation.OPERACION_VALIDA;
     }
 
@@ -85,11 +83,5 @@ public class OperacionService {
         return r;
 
     }
-
-	public static OperacionService validar(Operacion operacion) {
-		return null;
-	}
-
-
 
 }

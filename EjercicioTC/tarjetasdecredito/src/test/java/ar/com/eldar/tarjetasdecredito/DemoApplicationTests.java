@@ -13,8 +13,8 @@ import ar.com.eldar.tarjetasdecredito.services.TarjetaService;
 @SpringBootTest
 class DemoApplicationTests {
 
-	@Test
-	void testCalidarTarjeta() {
+	/*@Test
+	void testValidarTarjeta() 
 
 		//CREO UNA TARJETA
         Tarjeta tarjeta = new Tarjeta();
@@ -37,13 +37,13 @@ class DemoApplicationTests {
         //IDENTIFICO SI UNA TARJETA ES DISTINTA A OTRA
         Tarjeta otraTarjeta = new Tarjeta();
         otraTarjeta.setNroTarjeta("31556684889498");
-        TarjetaService.compararTarjetas(tarjeta, otraTarjeta));
+        Tarjeta.compararTarjetas(tarjeta, otraTarjeta);
 
 
         //OBTENGO TASA INFORMANDO MARCA E IMPORTE
-	}
+	}*/
 
 
 	
-
 }
+

@@ -2,19 +2,18 @@ package ar.com.eldar.tarjetasdecredito.entities;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ar.com.eldar.tarjetasdecredito.entities.behavior.TarjetaAmexBehavior;
 import ar.com.eldar.tarjetasdecredito.entities.behavior.TarjetaBehavior;
 import ar.com.eldar.tarjetasdecredito.entities.behavior.TarjetaNaraBehavior;
 import ar.com.eldar.tarjetasdecredito.entities.behavior.TarjetaVisaBehavior;
-import ar.com.eldar.tarjetasdecredito.services.TarjetaService;
-import ar.com.eldar.tarjetasdecredito.services.TarjetaService.TarjetaValidationType;
+
 
 /**
  * Tarjeta
  */
-@Entity
+
 public class Tarjeta {
 
     public enum TarjetaType {
@@ -25,6 +24,8 @@ public class Tarjeta {
     private String nroTarjeta;
     private String cardHolder;
     private Date fechaVto;
+
+    @JsonIgnore
     private TarjetaBehavior behavior;
 
     public Tarjeta(TarjetaType marca, String nroTarjeta, String cardHolder, Date fechaVto) {
@@ -87,7 +88,7 @@ public class Tarjeta {
     public void setTarjeta(Operacion operacion) { // ver
     }
 
-
+    @JsonIgnore
     public TarjetaBehavior getBehavior() {
         if (this.behavior == null){
             this.setMarca(this.getMarca());
@@ -102,7 +103,7 @@ public class Tarjeta {
 
     public double calcularTasa(Operacion operacion){
         return this.behavior.calcularTasa(operacion);
-    } //conecto con tarjeta service
+    } 
 
     @Override
     public String toString() {
@@ -110,7 +111,15 @@ public class Tarjeta {
                 + marca + ", nroTarjeta=" + nroTarjeta + "]";
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        Tarjeta t2 = (Tarjeta)obj;
+        return this.getNroTarjeta().equals(t2.getNroTarjeta()) &&
+               this.getMarca() == t2.getMarca();
+    }
+
      
 
 }

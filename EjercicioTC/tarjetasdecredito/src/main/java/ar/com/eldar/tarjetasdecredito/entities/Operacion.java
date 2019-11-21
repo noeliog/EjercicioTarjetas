@@ -2,15 +2,15 @@ package ar.com.eldar.tarjetasdecredito.entities;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-
-import ar.com.eldar.tarjetasdecredito.services.OperacionService;
 import ar.com.eldar.tarjetasdecredito.services.OperacionService.OperacionValidation;
+
+
+
 
 /**
  * Operacion
  */
-@Entity
+
 public class Operacion {
 
    private int cliente;
@@ -19,10 +19,6 @@ public class Operacion {
    private double importe;
    private String tipoOperacion;
 
-   public OperacionService validar(Operacion operacion) {
-      return OperacionService.validar(this);
-
-   }
 
    public Tarjeta getTarjeta() {
       return tarjeta;
@@ -78,5 +74,10 @@ public class Operacion {
    public String toString() {
       return "Operacion [fechaOperacion=" + fechaOperacion + ", importe=" + importe + ", tarjeta=" + tarjeta
             + ", tipoOperacion=" + tipoOperacion + "]";
+   }
+
+   public OperacionValidation validar(Operacion operacion) {
+      return this.validar(operacion);
+
    }
 }

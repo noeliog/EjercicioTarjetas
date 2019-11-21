@@ -48,7 +48,7 @@ public class TarjetaController {
     public OperacionResponse postValidarOperacion(@RequestBody Operacion operacion) {
 
         OperacionResponse r = new OperacionResponse();
-        OperacionValidation o = operacionService.validar(operacion.getImporte());
+        OperacionValidation o = operacionService.validar(operacion);
 
         r.isOk = o == OperacionValidation.OPERACION_VALIDA;
 
