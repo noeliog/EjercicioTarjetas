@@ -2,6 +2,8 @@ package ar.com.eldar.tarjetasdecredito.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import ar.com.eldar.tarjetasdecredito.entities.behavior.TarjetaAmexBehavior;
 import ar.com.eldar.tarjetasdecredito.entities.behavior.TarjetaBehavior;
 import ar.com.eldar.tarjetasdecredito.entities.behavior.TarjetaNaraBehavior;
@@ -12,6 +14,7 @@ import ar.com.eldar.tarjetasdecredito.services.TarjetaService.TarjetaValidationT
 /**
  * Tarjeta
  */
+@Entity
 public class Tarjeta {
 
     public enum TarjetaType {
@@ -86,7 +89,10 @@ public class Tarjeta {
 
 
     public TarjetaBehavior getBehavior() {
-        return behavior;
+        if (this.behavior == null){
+            this.setMarca(this.getMarca());
+        }
+        return this.behavior;
     }
 
     public void setBehavior(TarjetaBehavior behavior) {

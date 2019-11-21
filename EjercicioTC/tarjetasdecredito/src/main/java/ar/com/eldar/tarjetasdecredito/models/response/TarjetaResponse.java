@@ -7,5 +7,5 @@ public class TarjetaResponse {
 
     public boolean isOk = false;
     public String info = "";
-    public double importeTasa;
+    
 }

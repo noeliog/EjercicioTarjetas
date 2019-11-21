@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ar.com.eldar.tarjetasdecredito.entities.Tarjeta;
 import ar.com.eldar.tarjetasdecredito.entities.Tarjeta.TarjetaType;
+import ar.com.eldar.tarjetasdecredito.services.OperacionService;
+import ar.com.eldar.tarjetasdecredito.services.TarjetaService;
 
 @SpringBootTest
 class DemoApplicationTests {
@@ -41,7 +43,7 @@ class DemoApplicationTests {
         //OBTENGO TASA INFORMANDO MARCA E IMPORTE
 	}
 
-	@Test
+
 	
 
 }

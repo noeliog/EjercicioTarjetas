@@ -1,10 +1,13 @@
 package ar.com.eldar.tarjetasdecredito.services;
 
+import org.springframework.stereotype.Service;
+
 import ar.com.eldar.tarjetasdecredito.entities.Operacion;
 
 /**
  * OperacionService
  */
+@Service
 public class OperacionService {
 
     public enum OperacionValidation {
@@ -13,6 +16,7 @@ public class OperacionService {
     }
 
     public  OperacionValidation validar(double importe) {
+        
         if (Operacion.getImporte() > 1000)
             return OperacionValidation.OPERACION_INVALIDA;
 
@@ -82,8 +86,10 @@ public class OperacionService {
 
     }
 
-    public static OperacionService validacion(Operacion operacion) {
-        return null;
-    }
+	public static OperacionService validar(Operacion operacion) {
+		return null;
+	}
+
+
 
 }

@@ -24,24 +24,21 @@ import ar.com.eldar.tarjetasdecredito.services.OperacionService.OperacionValidat
 @RestController
 public class TarjetaController {
 
-
     @Autowired
     OperacionService operacionService;
 
     @Autowired
     TarjetaService tarjetaService;
-    
+
     @GetMapping("/tarjetas/prueba")
     public Tarjeta getPruebaTarjetaInfo() {
         Tarjeta tarjeta = new Tarjeta();
         tarjeta.setMarca(TarjetaType.VISA);
         tarjeta.setNroTarjeta("12345602587213");
-		tarjeta.setCardHolder("Juan Gomez");
-		
-		Date vto = new Date(2019,12,12);
-        tarjeta.setFechaVto(vto); //ver
+        tarjeta.setCardHolder("Juan Gomez");
 
-
+        Date vto = new Date(2019, 12, 12);
+        tarjeta.setFechaVto(vto); // ver
 
         return tarjeta;
 
@@ -49,32 +46,27 @@ public class TarjetaController {
 
     @PostMapping("/operaciones")
     public OperacionResponse postValidarOperacion(@RequestBody Operacion operacion) {
-        
+
         OperacionResponse r = new OperacionResponse();
         OperacionValidation o = operacionService.validar(operacion.getImporte());
 
         r.isOk = o == OperacionValidation.OPERACION_VALIDA;
 
-
         return r;
 
-
-        
     }
 
     @PostMapping("/operaciones/tasas")
     public TasaResponse postGetTasa(@RequestBody Operacion operacion) {
-        
+
         TasaResponse r = new TasaResponse();
         double tasa = tarjetaService.calcularTasa(operacion);
 
-        r.isOk = true; 
+        r.isOk = true;
         r.importeTasa = tasa;
-
 
         return r;
 
     }
 
-    
 }

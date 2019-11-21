@@ -5,12 +5,15 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 import ar.com.eldar.tarjetasdecredito.entities.Operacion;
 import ar.com.eldar.tarjetasdecredito.entities.Tarjeta;
 
 /**
  * TarjetaService
  */
+@Service
 public class TarjetaService {
 
     public enum TarjetaValidationType {
@@ -18,7 +21,7 @@ public class TarjetaService {
 
     }
 
-    public  TarjetaValidationType validarTarjeta(Tarjeta tarjeta) {
+    public TarjetaValidationType validarTarjeta(Tarjeta tarjeta) {
         if (tarjeta.getFechaVto().after(new Date()) != true)
 
             return TarjetaValidationType.TARJETA_VALIDA_PARA_OPERAR;
@@ -27,18 +30,17 @@ public class TarjetaService {
 
     }
 
-    public  boolean compararTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2) {
+    public boolean compararTarjetas(Tarjeta tarjeta1, Tarjeta tarjeta2) {
         return (tarjeta1.equals(tarjeta2));
 
-
     }
 
-    public  String getInformacion(Tarjeta tarjeta) {
+    public String getInformacion(Tarjeta tarjeta) {
         return tarjeta.toString();
     }
-    public double calcularTasa(Operacion operacion){
-        return operacion.getTarjeta().calcularTasa(operacion);
-    } 
 
+    public double calcularTasa(Operacion operacion) {
+        return operacion.getTarjeta().calcularTasa(operacion);
+    }
 
 }
